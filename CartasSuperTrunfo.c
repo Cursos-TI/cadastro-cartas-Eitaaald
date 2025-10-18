@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 int main() {
     // Dados da carta 1
@@ -21,35 +22,57 @@ int main() {
 
     // Leitura dos dados da Carta 1
     printf("Digite os dados da Carta 1:\n");
+
     printf("Estado: ");
     scanf(" %c", &estado1);
+    getchar(); // limpa o \n do buffer
+
     printf("Código: ");
-    scanf("%s", codigo1);
+    fgets(codigo1, sizeof(codigo1), stdin);
+    codigo1[strcspn(codigo1, "\n")] = '\0'; // remove o \n
+
     printf("Nome da Cidade: ");
-    scanf(" %[^\n]", nomeCidade1);
+    fgets(nomeCidade1, sizeof(nomeCidade1), stdin);
+    nomeCidade1[strcspn(nomeCidade1, "\n")] = '\0';
+
     printf("População: ");
     scanf("%d", &populacao1);
+
     printf("Área (em km²): ");
     scanf("%f", &area1);
+
     printf("PIB (em bilhões de reais): ");
     scanf("%f", &pib1);
+
     printf("Número de Pontos Turísticos: ");
     scanf("%d", &pontosTuristicos1);
 
+    getchar(); // limpa o buffer antes da próxima leitura
+
     // Leitura dos dados da Carta 2
-    printf("Digite os dados da Carta 2:\n");
+    printf("\nDigite os dados da Carta 2:\n");
+
     printf("Estado: ");
     scanf(" %c", &estado2);
+    getchar();
+
     printf("Código: ");
-    scanf("%s", codigo2);
+    fgets(codigo2, sizeof(codigo2), stdin);
+    codigo2[strcspn(codigo2, "\n")] = '\0';
+
     printf("Nome da Cidade: ");
-    scanf(" %[^\n]", nomeCidade2);
+    fgets(nomeCidade2, sizeof(nomeCidade2), stdin);
+    nomeCidade2[strcspn(nomeCidade2, "\n")] = '\0';
+
     printf("População: ");
     scanf("%d", &populacao2);
+
     printf("Área (em km²): ");
     scanf("%f", &area2);
+
     printf("PIB (em bilhões de reais): ");
     scanf("%f", &pib2);
+
     printf("Número de Pontos Turísticos: ");
     scanf("%d", &pontosTuristicos2);
 
@@ -62,7 +85,7 @@ int main() {
     float pibPerCapita2 = (pib2 * 1000000000) / populacao2;
 
     // Impressão dos dados da Carta 1
-    printf("Carta 1:\n");
+    printf("\n===== Carta 1 =====\n");
     printf("Estado: %c\n", estado1);
     printf("Código: %s\n", codigo1);
     printf("Nome da Cidade: %s\n", nomeCidade1);
@@ -74,7 +97,7 @@ int main() {
     printf("PIB per Capita: %.2f reais\n", pibPerCapita1);
 
     // Impressão dos dados da Carta 2
-    printf("Carta 2:\n");
+    printf("\n===== Carta 2 =====\n");
     printf("Estado: %c\n", estado2);
     printf("Código: %s\n", codigo2);
     printf("Nome da Cidade: %s\n", nomeCidade2);
