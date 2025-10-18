@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <string.h>
 
 int main() {
     // Dados da carta 1
